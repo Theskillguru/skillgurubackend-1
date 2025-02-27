@@ -40,7 +40,8 @@ const generateToken = (channelName) => {
     expiry: privilegeExpiredTs,
   };
 
-  console.log("Generated token for channel "${channelName}": ${token}");
+  console.log(`Generated token for channel "${channelName}": ${token}`);
+
   return token;
 };
 
@@ -48,10 +49,12 @@ const generateToken = (channelName) => {
 const predefinedChannels = ['channel1']; // Add your channels here
 const startTokenGeneration = () => {
   setInterval(() => {
-    console.log(Token generation started at: ${new Date().toISOString()});
+    console.log(`Token generation started at: ${new Date().toISOString()}`);
+
     predefinedChannels.forEach((channelName) => {
       const token = generateToken(channelName);
-      console.log(Generated token for ${channelName}:, token);
+      console.log(`Generated token for ${channelName}:`, token);
+
     });
     console.log('Updated tokenCache:', tokenCache);
   }, 300000); // Run every 5 minutes (300,000 ms)
@@ -77,6 +80,7 @@ app.get('/generate-token', (req, res) => {
 
 // Start the server and periodic token generation
 app.listen(PORT, () => {
-  console.log(Server is running on port ${PORT});
+  console.log(`Server is running on port ${PORT}`);
+
   startTokenGeneration(); // Start auto-generation of tokens
 });
