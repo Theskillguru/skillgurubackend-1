@@ -1,5 +1,7 @@
 const express = require('express');
 const { RtcTokenBuilder, RtcRole } = require('agora-access-token');
+const cors = require("cors"); // Import CORS
+
 require('dotenv').config();
 
 const app = express();
@@ -8,6 +10,8 @@ const PORT = 3000;
 // Get environment variables
 const APP_ID = 'f3c2d6e28d7a4ccdbd047e41842e96f6';
 const APP_CERTIFICATE = 'e991452edac94c4bb6a13d133b2746f4';
+app.use(cors()); 
+
 
 // In-memory cache for storing tokens
 const tokenCache = {};
@@ -36,7 +40,7 @@ const generateToken = (channelName) => {
     expiry: privilegeExpiredTs,
   };
 
-  console.log(Generated token for channel "${channelName}": ${token});
+  console.log("Generated token for channel "${channelName}": ${token}");
   return token;
 };
 
