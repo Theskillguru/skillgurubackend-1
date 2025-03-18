@@ -20,7 +20,7 @@ const tokenCache = {};
 const generateToken = (channelName) => {
   const uid = 0; // Use 0 for auto-generated user ID
   const role = RtcRole.PUBLISHER; // Role can be PUBLISHER or SUBSCRIBER
-  const expirationTimeInSeconds = 3600; // Token validity (in seconds)
+  const expirationTimeInSeconds = 86400; // Token validity (in seconds)
   const currentTimestamp = Math.floor(Date.now() / 1000);
   const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
 
